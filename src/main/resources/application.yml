@@ -1,0 +1,37 @@
+server:
+  port: 9094
+
+info:
+  component: demo
+  name: demo
+
+spring:
+  application:
+    name: demo
+  datasource:
+    url: jdbc:mysql://localhost:3306/ficticiusclean?useSSL=false&autoReconnect=true&failOverReadOnly=false&maxReconnects=100&uuseTimezone=true&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+    driverClassName: com.mysql.jdbc.Driver
+    tomcat:
+      max-active: 10
+    dbcp2:
+      test-while-idle: true
+      validationQuery: SELECT 1
+  jpa:
+    show-sql: true
+    hibernate:
+      naming:
+        strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        shared-cache-mode: ENABLE_SELECTIVE
+        dialect: org.hibernate.dialect.MySQL5Dialect
+
+flyway:
+  url: jdbc:mysql://localhost:3306/ficticiusclean?useSSL=false&autoReconnect=true&failOverReadOnly=false&maxReconnects=100&uuseTimezone=true&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull&allowPublicKeyRetrieval=true
+  schemas: ficticiusclean
+  user: "root"
+  password: "root"
+
+path-file-store: /var/upload_data
